@@ -1,19 +1,20 @@
 import styled from "styled-components";
 export const UpperHeadSection = styled.div`
-  width: 256px;
+  //width: 256px;
   display: flex;
   flex-direction: column;
   height: 100vh;
   border-inline-end: 1px solid rgba(5, 5, 5, 0.06);
 `;
 export const HeadingSection = styled.div`
-  width: 256px;
+  //width: 256px;
   display: flex;
+  height: 64px;
   flex-direction: row;
   background: #1677ff;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 16px;
+  padding: 0px 8px;
 `;
 export const BankLogoSection = styled.img`
   height: 29px;
@@ -22,7 +23,7 @@ export const BankLogoSection = styled.img`
 export const ProfileSection = styled.div`
   display: flex;
   flex-direction: column;
-  width: 256px;
+  //width: 256px;
   margin: 24px 0px;
 `;
 export const PicSection = styled.div`

@@ -53,7 +53,29 @@ function getItem(
     type,
   } as MenuItem;
 }
-
+const data1 = {
+  id: 2,
+  name: "Ervin Howell",
+  username: "Antonette",
+  email: "Shanna@melissa.tv",
+  address: {
+    street: "Victor Plains",
+    suite: "Suite 879",
+    city: "Wisokyburgh",
+    zipcode: "90566-7771",
+    geo: {
+      lat: "-43.9509",
+      lng: "-34.4618",
+    },
+  },
+  phone: "010-692-6593 x09125",
+  website: "anastasia.net",
+  company: {
+    name: "Deckow-Crist",
+    catchPhrase: "Proactive didactic contingency",
+    bs: "synergize scalable supply-chains",
+  },
+};
 const items: MenuProps["items"] = [
   getItem("Dashboards", "sub1", null, [
     getItem("Overview", "g1", <SignalFilled />),
@@ -101,7 +123,7 @@ const SideMenuBar: React.FC = () => {
     setCollapsed(!collapsed);
   };
 
-  const { data } = useFetch("https://jsonplaceholder.typicode.com/users/1");
+  const { data } = useFetch("https://jsonplaceholder.typicode.com/users/1",data1);
 
   return (
     <UpperHeadSection>
@@ -110,7 +132,7 @@ const SideMenuBar: React.FC = () => {
         <div>
           <Button
             type="primary"
-            onClick={toggleCollapsed}
+            onClick={() => setCollapsed(!collapsed)}
             style={{ marginBottom: 16 }}
           >
             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -135,7 +157,7 @@ const SideMenuBar: React.FC = () => {
       </ProfileSection>
       <Menu
         onClick={onClick}
-        style={{ width: 256 }}
+        //style={{ width: 256 }}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
