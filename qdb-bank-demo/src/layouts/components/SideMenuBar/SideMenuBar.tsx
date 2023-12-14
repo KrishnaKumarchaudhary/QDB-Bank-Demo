@@ -35,7 +35,7 @@ import {
   UpperHeadSection,
 } from "./styled.component";
 import { useFetch } from "../../../Hooks/useCallApi";
-
+import { useHistory } from "react-router-dom";
 type MenuItem = Required<MenuProps>["items"][number];
 
 function getItem(
@@ -114,16 +114,29 @@ const items: MenuProps["items"] = [
 ];
 
 const SideMenuBar: React.FC = () => {
+  const history = useHistory();
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
+    if (e.key === "g2") {
+      history.push("/calender");
+    }
+    if (e.key === "g1") {
+      history.push("/overview");
+    }
+    if (e.key === "g3") {
+      history.push("/scheduler");
+    }
+    if (e.key === "g4") {
+      history.push("/livealert");
+    }
+    if (e.key === "g11" || e.key === "g21" || e.key === "g31") {
+      history.push("/home", { data: e.key });
+    }
   };
   const [collapsed, setCollapsed] = useState(false);
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-
-  const { data } = useFetch("https://jsonplaceholder.typicode.com/users/1",data1);
+const envUrl = process.env.REACT_APP_API_ENDPOINT_USER;
+const url = envUrl || "https://jsonplaceholder.typicode.com/users/1";
+  const { data } = useFetch(url, data1);
 
   return (
     <UpperHeadSection>

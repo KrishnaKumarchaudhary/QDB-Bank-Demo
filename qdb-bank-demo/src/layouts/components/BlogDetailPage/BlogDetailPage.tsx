@@ -21,7 +21,6 @@ export interface IPost {
 }
 export const BlogDetailPage = (props: any) => {
   const { data,keys } = props;
-  console.log("blogoage", data);
   const [pageNo, setPageNo] = useState(1);
   const [pageDataValue, setPageDataValue] = useState(data);
   const PageChangeHandle = (data: any) => {
@@ -32,7 +31,6 @@ export const BlogDetailPage = (props: any) => {
     let newData = [{}];
     if (data.length > pageNo + 4) {
       for (let i = (pageNo - 1) * 4; i < pageNo * 4; ++i) {
-        console.log(i, data[i]);
         if (data[i] !== undefined) {
           newData.push(data[i]);
         }
@@ -44,7 +42,7 @@ export const BlogDetailPage = (props: any) => {
     }
   }, [pageNo, data, keys]);
 
-  console.log("data blog", pageDataValue);
+
   return (
     <>
       {pageDataValue.map((e: any, index: number) => (

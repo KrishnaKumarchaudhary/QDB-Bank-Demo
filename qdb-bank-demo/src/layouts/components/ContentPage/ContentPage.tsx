@@ -1,10 +1,11 @@
-import React from "react";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 import { BlogDetailPage } from "../BlogDetailPage/BlogDetailPage";
 import { useFetch } from "../../../Hooks/useCallApi";
 
 export const ContentPage: React.FC = () => {
+  const envUrl =process.env.REACT_APP_API_ENDPOINT_POST;
+  const url = envUrl || "https://jsonplaceholder.typicode.com/users/1/posts";
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -16,14 +17,9 @@ export const ContentPage: React.FC = () => {
       body: "",
     },
   ];
-  const { data } = useFetch(
-    "https://jsonplaceholder.typicode.com/users/1/posts",
-    data1
-  );
-  console.log("ContentPage", data);
+  const { data } = useFetch(url, data1);
   const Latestdata = data.slice(0, 4);
-  const Archiveddata = data.slice(5,8);
-  console.log("ContentPage", data, Latestdata, Archiveddata);
+  const Archiveddata = data.slice(5, 8);
   const items: TabsProps["items"] = [
     {
       key: "1",
@@ -42,5 +38,5 @@ export const ContentPage: React.FC = () => {
     },
   ];
 
-  return <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
+  return <Tabs defaultActiveKey={"1"} items={items} onChange={onChange} />;
 };
